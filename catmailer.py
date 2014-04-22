@@ -58,7 +58,7 @@ if __name__ == '__main__':
         fact = facts.pop()
         command = 'echo "{0}" | mail {1}'
         log('Sending {0} to:'.format(fact))
-        for r in recipients:
-            print '\t' + r
-            check_output(command.format(fact, r),
+        for s in subs:
+            print '\t' + s
+            check_output(command.format(fact, s),
                          shell=True)
