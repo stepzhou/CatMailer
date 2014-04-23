@@ -28,6 +28,7 @@ def add_new_subscribers(subs_file, existing_subs):
 
 def sleep_until(hour):
     """Sleep until a certain hour of the day"""
+    time.sleep(1)
     t = datetime.datetime.today()
     future = datetime.datetime(t.year, t.month, t.day, hour, 0)
     if t.hour >= hour:
@@ -40,6 +41,7 @@ def log(msg):
     """Log message with current datetime"""
     print '{0}: {1}'.format(datetime.datetime.now(),
                             msg)
+
 
 if __name__ == '__main__':
     facts_file = sys.argv[1]
@@ -57,8 +59,7 @@ if __name__ == '__main__':
         add_new_subscribers(subs_file, subs)
         fact = facts.pop()
         command = 'echo "{0}" | mail {1}'
-        log('Sending {0} to:'.format(fact))
+        log('Sending "{0}" to subscribers'.format(fact))
         for s in subs:
-            print '\t' + s
             check_output(command.format(fact, s),
                          shell=True)
